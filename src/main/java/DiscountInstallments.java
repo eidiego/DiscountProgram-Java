@@ -7,12 +7,10 @@ import java.util.Scanner;
 public class DiscountInstallments {
     public static void main(String[] args) {
 
-        // Date formater for an easy read
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
         // Scanner to obtain user inputs
         Scanner sc = new Scanner(System.in);
 
+        // Try/Catch logic to catch exceptions on the inputs
         try {
             System.out.println("Olá! Por favor insira os dados da sua compra, seguindo as instruções abaixo!");
             System.out.println("##############################");
@@ -65,6 +63,7 @@ public class DiscountInstallments {
                 DecimalFormat formato = new DecimalFormat("#.##");
                 System.out.println("R$" + formato.format(totalAmountWithDiscount / installments));
 
+                // For structure to show the due date for the next months
                 System.out.println("As datas de vencimento das parcelas serão: ");
                 for (int month = 1; month <= installments; month++) {
                     LocalDate dueDate = LocalDate.now().plusMonths(month);
