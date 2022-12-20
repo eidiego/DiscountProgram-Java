@@ -25,39 +25,17 @@ public class DiscountInstallments {
             // Defensive programming to prevent negative unwanted values
             if (installments > 0 && totalAmount > 0) {
                 // Conditional logic to define how much discount will be applied.
-                switch (installments) {
-                    case 1:
-                        discount = totalAmount * 10 / 100;
-                        discountInfo = "O valor do desconto é de 10%";
-                        break;
-                    case 2:
-                        discount = totalAmount * 8 / 100;
-                        discountInfo = "O valor do desconto é de 8%";
-                        break;
-                    case 3:
-                        discount = totalAmount * 6 / 100;
-                        discountInfo = "O valor do desconto é de 6%";
-                        break;
-                    case 4:
-                        discount = totalAmount * 4 / 100;
-                        discountInfo = "O valor do desconto é de 4%";
-                        break;
-                    case 5:
-                        discount = totalAmount * 2 / 100;
-                        discountInfo = "O valor do desconto é de 2%";
-                        break;
-                    default:
-                        if (installments >= 6) {
-                            discount = totalAmount * 0 / 100;
-                            discountInfo = "O valor do desconto é de 0%";
-                        }
+                if (installments > 0 && installments < 6) {
+                    discount = totalAmount * installments / 100;
+                    System.out.println("O valor do desconto é de: " + installments + "%");
+                } else if (installments >= 6 ) {
+                    System.out.println("Não existe descontos para essa quantia de parcelamentos.");
                 }
+
                 double totalAmountWithDiscount = totalAmount - discount;
 
-                System.out.print("O valor total com o desconto aplicado é: ");
+                System.out.print("O valor final da compra é: ");
                 System.out.println("R$" + totalAmountWithDiscount);
-                System.out.println(discountInfo);
-                System.out.print("O valor das parcelas será: ");
 
                 // Formater to show a amount without unnecessary numbers after comma
                 DecimalFormat formato = new DecimalFormat("#.##");
